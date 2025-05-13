@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Everest International College</title>
+  <style>
+    /* Reset & Fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background: #004080;
+      color: white;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin-bottom: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 80px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: #004080;
+      margin-bottom: 20px;
+    }
+
+    .programs, .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #00264d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Fade in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Everest International College</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#admission">Admission</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about" class="fade-in">
+    <h2>About Us</h2>
+    <p>
+      Everest International College is a premier academic institution located in Kathmandu, Nepal.
+      With a mission to provide quality higher education and holistic development, we foster an
+      environment of learning, innovation, and leadership.
+    </p>
+  </section>
+
+  <section id="programs" class="fade-in">
+    <h2>Our Programs</h2>
+    <div class="programs">
+      <div class="card">
+        <h3>Bachelor in Computer Application (BCA)</h3>
+        <p>Focuses on software development, web design, and data structures with practical exposure.</p>
+      </div>
+      <div class="card">
+        <h3>Bachelor in Business Studies (BBS)</h3>
+        <p>A comprehensive program covering management, accounting, and economics.</p>
+      </div>
+      <div class="card">
+        <h3>Bachelor in Information Management (BIM)</h3>
+        <p>Combines IT and management to build strong business-IT professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission" class="fade-in">
+    <h2>Admission</h2>
+    <p>
+      Admissions for the Fall Semester are open now! Candidates must pass the entrance test and meet the eligibility criteria. Scholarships are available for outstanding students.
+    </p>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <div class="card">
+        <h3>Address</h3>
+        <p>Kirtipur, Kathmandu, Nepal</p>
+      </div>
+      <div class="card">
+        <h3>Email</h3>
+        <p>info@everestcollege.edu.np</p>
+      </div>
+      <div class="card">
+        <h3>Phone</h3>
+        <p>+977-1-5551234</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Everest International College. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+</body>
+</html>
